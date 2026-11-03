@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>FIGUMATE GAME</title><link rel="stylesheet" href="style.css"></head><body>
+<canvas id="c"></canvas><div id="flash"></div><div id="cd"></div><div id="toast"></div>
+<button id="fs" title="Pantalla completa">⛶</button>
+
+<div id="load" class="scr show"><h1>FIGUMATE</h1><div class="bar"><i id="lb"></i></div><p id="lt">Cargando figuras…</p><p id="warn"></p></div>
+
+<div id="menu" class="scr"><div class="panel"><h1>FIGUMATE GAME</h1>
+<p class="sub">¡Corre, esquiva y demuestra cuánto sabes de música!</p>
+<input id="pname" maxlength="14" placeholder="Tu nombre (obligatorio)" autocomplete="off">
+<div id="lvsel"></div><p id="lvd" class="lvd"></p>
+<div class="row"><button class="big" id="play">▶ JUGAR</button><button class="big alt" id="how">INSTRUCCIONES</button></div>
+<div class="set">🎵<input class="vm" type="range" min="0" max="1" step=".05" value=".5">🔊<input class="vs" type="range" min="0" max="1" step=".05" value=".7"><button class="mt">🔈</button></div>
+<small>Kabert Studio Pro — LMKE · <a href="https://kabert-edulab.vercel.app/" target="_blank">kabert-edulab.vercel.app</a> · WhatsApp 65596602</small></div></div>
+
+<div id="howbox" class="scr"><div class="panel"><h2>Cómo jugar</h2>
+<p>Recoge ⭐ para congelar el tiempo y sumar <b>5 figuras</b>. Acierta y ganas un disparo. Destruye 5 vehículos y cruza la meta.</p>
+<p><b>PC:</b> ←/→ o A/D mover · Espacio saltar · X o Ctrl disparar · P pausa<br><b>Móvil:</b> botones táctiles (en horizontal).</p>
+<p>Valores: redonda 4 · blanca 2 · negra 1 · corchea ½ · semicorchea ¼ · figuras especiales 1.</p>
+<button class="big" id="howok">ENTENDIDO</button></div></div>
+
+<div id="hud"><div class="r"><span id="hn"></span><span id="hl"></span><span id="ht">⏱ 0</span><span id="hs">0</span><button id="pbtn">⏸</button></div>
+<div class="r"><span id="he"></span><div class="eb"><i id="ee"></i></div><span id="hc">⚡0</span></div>
+<div class="r c"><span id="ebn"></span><div class="eb red"><i id="ef"></i></div></div></div>
+
+<div id="ctrl"><div><button id="bl">◀</button><button id="br">▶</button></div><div><button id="bj">⤒</button><button id="bf">✹</button></div></div>
+
+<div id="quiz" class="scr"><div class="qbox"><div id="qh"></div><div id="qf"></div><div id="qa"></div></div></div>
+
+<div id="pause" class="scr"><div class="panel"><h2>PAUSA</h2><button class="big" id="pres">CONTINUAR</button><button class="big alt" id="prest">REINICIAR</button>
+<div class="set">🎵<input class="vm" type="range" min="0" max="1" step=".05" value=".5">🔊<input class="vs" type="range" min="0" max="1" step=".05" value=".7"><button class="mt">🔈</button></div></div></div>
+
+<div id="end" class="scr"><div id="conf"></div><div class="panel"><h1 id="etitle"></h1><div id="emedal"></div><p id="esub"></p><div id="estats"></div>
+<div class="row"><button class="big" id="eb1"></button><button class="big alt" id="eb2"></button></div></div></div>
+
+<div id="rot" class="scr"><div><div class="ph">📱</div><h2>Gira tu dispositivo para jugar</h2></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="figures.js"></script><script src="game.js"></script></body></html>
