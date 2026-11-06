@@ -1,0 +1,15 @@
+AUDIOS DE FIGUMATE — pon aquí tus archivos .mp3 con ESTOS nombres exactos (minúsculas, sin espacios):
+
+  menu.mp3        Música del menú (también suena en el garaje). Se repite en bucle.
+  carrera1.mp3    ┐
+  carrera2.mp3    │ Música de la carrera: las 5 suenan una tras otra en bucle
+  carrera3.mp3    │ (al terminar la 5 vuelve a la 1). Empiezan en orden aleatorio
+  carrera4.mp3    │ en cada partida.
+  carrera5.mp3    ┘
+  final.mp3       Música de la tarjeta final (ganes o pierdas). Se repite en bucle.
+
+Total: 7 archivos. Si falta alguno el juego sigue funcionando: salta al siguiente
+y, si no hay ninguno, usa un chiptune de respaldo.
+Consejos: mp3 de 128-192 kbps (pesan poco en GitHub Pages); en carrera, ritmo
+animado pero sin voz que distraiga; que cada canción empiece y termine limpio
+para que el cambio entre canciones no se note.

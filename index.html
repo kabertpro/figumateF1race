@@ -1,38 +1,77 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>FIGUMATE GAME</title><link rel="stylesheet" href="style.css"></head><body>
+<title>FIGUMATE GAME · Kabert Studio Pro</title>
+<meta name="description" content="FIGUMATE GAME: corre, esquiva y suma figuras musicales. Juego de carreras estilo bloques.">
+<meta property="og:title" content="FIGUMATE GAME · Kabert Studio Pro">
+<meta property="og:description" content="Corre, esquiva y suma figuras musicales.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2345a02e'/%3E%3Crect y='8' width='16' height='8' fill='%238b5a2b'/%3E%3Crect x='3' y='2' width='10' height='8' fill='%23ffd400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
 <canvas id="c"></canvas><div id="flash"></div><div id="cd"></div><div id="toast"></div>
 <button id="fs" title="Pantalla completa">⛶</button>
 
-<div id="load" class="scr show"><h1>FIGUMATE</h1><div class="bar"><i id="lb"></i></div><p id="lt">Cargando figuras…</p><p id="warn"></p></div>
+<!-- SPLASH -->
+<div id="splash" class="scr show"><div id="blks"></div>
+ <div class="splash-in">
+  <div class="presents">KABERT STUDIO PRO presenta</div>
+  <h1 class="logo">FIGU<span>MATE</span></h1>
+  <p class="tag">Corre · Esquiva · Suma figuras</p>
+  <div class="bar"><i id="lb"></i></div><p id="lt">Cargando…</p>
+  <p id="spgo">▶ TOCA PARA EMPEZAR</p>
+  <small>© Kabert Studio Pro — LMKE</small>
+ </div></div>
 
-<div id="menu" class="scr"><div class="panel"><h1>FIGUMATE GAME</h1>
-<p class="sub">¡Corre, esquiva y demuestra cuánto sabes de música!</p>
-<input id="pname" maxlength="14" placeholder="Tu nombre (obligatorio)" autocomplete="off">
-<div id="lvsel"></div><p id="lvd" class="lvd"></p>
-<div class="row"><button class="big" id="play">▶ JUGAR</button><button class="big alt" id="how">INSTRUCCIONES</button></div>
-<div class="set">🎵<input class="vm" type="range" min="0" max="1" step=".05" value=".5">🔊<input class="vs" type="range" min="0" max="1" step=".05" value=".7"><button class="mt">🔈</button></div>
-<small>Kabert Studio Pro — LMKE · <a href="https://kabert-edulab.vercel.app/" target="_blank">kabert-edulab.vercel.app</a> · WhatsApp 65596602</small></div></div>
+<!-- MENÚ -->
+<div id="menu" class="scr"><div class="panel">
+ <h1 class="logo sm">FIGU<span>MATE</span></h1>
+ <p class="sub">Elige tu nivel</p><div id="lvsel"></div><p id="lvd" class="lvd"></p><ul id="bkmsg"></ul>
+ <div class="who">👤 <b id="uname"></b> <button id="chname" class="mini" title="Cambiar usuario">✎ cambiar</button></div>
+ <div id="rec" class="rec"></div>
+ <div class="row"><button class="big go" id="play">▶ JUGAR</button><button class="big alt" id="garbtn">🚗 GARAJE</button></div>
+ <div class="row"><button class="big sec" id="how">❓ CÓMO JUGAR</button></div>
+ <div class="set">🎵<input class="vm" type="range" min="0" max="1" step=".05" value=".5">🔊<input class="vs" type="range" min="0" max="1" step=".05" value=".7"><button class="mt">🔈</button></div>
+ <small>Kabert Studio Pro — LMKE · <a href="https://kabert-edulab.vercel.app/" target="_blank" rel="noopener">kabert-edulab.vercel.app</a> · <a href="https://wa.me/59165596602" target="_blank" rel="noopener">WhatsApp 65596602</a></small>
+</div></div>
 
+<!-- USUARIO -->
+<div id="namebox" class="scr"><div class="panel"><h2 id="nmt">Tu nombre</h2>
+ <input id="pname" maxlength="14" placeholder="Escribe tu nombre" autocomplete="off">
+ <p id="nmw" class="warn"></p>
+ <div class="row"><button class="big go" id="nmok">GUARDAR</button><button class="big sec" id="nmno">CANCELAR</button></div></div></div>
+
+<!-- GARAJE -->
+<div id="garage" class="scr"><div class="panel gpanel"><h2>🚗 GARAJE</h2><div id="gbody"></div><button class="big go" id="gok">✔ LISTO</button></div></div>
+
+<!-- CÓMO JUGAR -->
 <div id="howbox" class="scr"><div class="panel"><h2>Cómo jugar</h2>
-<p>Recoge ⭐ para congelar el tiempo y sumar <b>5 figuras</b>. Acierta y ganas un disparo. Destruye 5 vehículos y cruza la meta.</p>
-<p><b>PC:</b> ←/→ o A/D mover · Espacio saltar · X o Ctrl disparar · P pausa<br><b>Móvil:</b> botones táctiles (en horizontal).</p>
-<p>Valores: redonda 4 · blanca 2 · negra 1 · corchea ½ · semicorchea ¼ · figuras especiales 1.</p>
-<button class="big" id="howok">ENTENDIDO</button></div></div>
+<p class="txt">Recoge ⭐ para congelar el tiempo y sumar <b>las figuras</b> que aparecen. <b>Acierta y ganas un disparo.</b> Destruye 5 vehículos y cruza la meta. Cada nivel (1-20) trae más figuras y más dificultad.</p>
+<p class="txt"><b>PC:</b> ←/→ o A/D mover · Espacio saltar · X o Ctrl disparar · P pausa · 1-4 responder<br><b>Móvil:</b> botones táctiles (en horizontal).</p>
+<p class="txt">Valores: redonda 4 · blanca 2 · negra 1 · corchea ½ · semicorchea ¼ · figuras especiales 1.</p>
+<button class="big go" id="howok">ENTENDIDO</button></div></div>
 
+<!-- HUD -->
 <div id="hud"><div class="r"><span id="hn"></span><span id="hl"></span><span id="ht">⏱ 0</span><span id="hs">0</span><button id="pbtn">⏸</button></div>
 <div class="r"><span id="he"></span><div class="eb"><i id="ee"></i></div><span id="hc">⚡0</span></div>
 <div class="r c"><span id="ebn"></span><div class="eb red"><i id="ef"></i></div></div></div>
 
 <div id="ctrl"><div><button id="bl">◀</button><button id="br">▶</button></div><div><button id="bj">⤒</button><button id="bf">✹</button></div></div>
 
+<!-- PREGUNTA -->
 <div id="quiz" class="scr"><div class="qbox"><div id="qh"></div><div id="qf"></div><div id="qa"></div></div></div>
 
-<div id="pause" class="scr"><div class="panel"><h2>PAUSA</h2><button class="big" id="pres">CONTINUAR</button><button class="big alt" id="prest">REINICIAR</button>
+<div id="pause" class="scr"><div class="panel"><h2>PAUSA</h2><button class="big go" id="pres">CONTINUAR</button><button class="big sec" id="prest">REINICIAR</button><button class="big sec" id="pmenu">MENÚ</button>
 <div class="set">🎵<input class="vm" type="range" min="0" max="1" step=".05" value=".5">🔊<input class="vs" type="range" min="0" max="1" step=".05" value=".7"><button class="mt">🔈</button></div></div></div>
 
-<div id="end" class="scr"><div id="conf"></div><div class="panel"><h1 id="etitle"></h1><div id="emedal"></div><p id="esub"></p><div id="estats"></div>
-<div class="row"><button class="big" id="eb1"></button><button class="big alt" id="eb2"></button></div></div></div>
+<!-- FIN: tarjeta compartible -->
+<div id="end" class="scr"><div id="conf"></div>
+ <div class="endwrap"><canvas id="card" width="1600" height="900"></canvas>
+  <div class="endbtns">
+   <button class="big go" id="eb-save">💾 GUARDAR IMAGEN</button>
+   <button class="big alt" id="eb-share">📤 COMPARTIR</button>
+   <button class="big sec" id="eb-again">↻ JUGAR OTRA VEZ</button>
+   <button class="big sec" id="eb-menu">☰ MENÚ</button>
+  </div></div></div>
 
 <div id="rot" class="scr"><div><div class="ph">📱</div><h2>Gira tu dispositivo para jugar</h2></div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
